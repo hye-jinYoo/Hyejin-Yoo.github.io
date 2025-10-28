@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyejin Yoo | Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="./Portpolio_01.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <header class="main-header">
+            <div class="logo">
+                <img src="./img/yh.png" alt="Logo">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">JIN Portfolio</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <div class="title_copy">
+            <div class="marquee-line">
+                <span>CREATING WITH INTENT</span>
+            </div>
+            <div class="marquee-line">
+                <span>DESIGNING FOR IMPACT</span>
+            </div>
+            <div class="marquee-line">
+                <span>DESIGN BY JIN</span>
+            </div>
+        </div>
+
+        <section class="poster-section">
+
+        </section>
+
+        <main class="project-grid">
+            <!-- 1행 -->
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr01.jpg"></div>
+                <div class="pr_info">
+                    CESCO Homepage Renewal<br>2025
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main1.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr02.jpg"></div>
+                <div class="pr_info">
+                    CESCO Shopping Mall App<br>2025
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main2.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr03.jpg"></div>
+                <div class="pr_info">
+                    CESCO Digital Guide<br>2025
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main3.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+            
+            <!-- 2행 -->
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr04.jpg"></div>
+                <div class="pr_info">
+                    CESCO Product QR<br>2025
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main4.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr05.jpg"></div>
+                <div class="pr_info">
+                    CESCO Promotion<br>2025
+                </div>
+                <div class="new_img">
+                    <div class="inner">
+                        <img src="./img/main5.jpg">
+                        <img src="./img/main5_1.jpg" style="margin-top: 20px;">
+                        <button type="button" class="btn_close">&#x2715;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr06.jpg"></div>
+                <div class="pr_info">
+                    CESCO Service Report<br>2024
+                </div>
+                <div class="new_img">
+                    <div class="inner">
+                        <img src="./img/main6.jpg">
+                        <img src="./img/main6_1.jpg" style="margin-top: 20px;">
+                        <button type="button" class="btn_close">&#x2715;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3행 -->
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr07.jpg"></div>
+                <div class="pr_info">
+                    CESCO IOT App<br>2022
+                </div>
+                <div class="new_img">
+                    <div class="inner">
+                        <img src="./img/main7.jpeg">
+                        <img src="./img/main7_1.jpeg" style="margin-top: 20px;">
+                        <button type="button" class="btn_close">&#x2715;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr08.jpg"></div>
+                <div class="pr_info">
+                    CESCO Homepage<br>2022
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main8.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="pr_img"><img src="./img/pr09.jpg"></div>
+                <div class="pr_info">
+                    CESCO Mall Renewal 9<br>2022
+                </div>
+                <div class="new_img">
+                    <div class="inner"><img src="./img/main9.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        // 썸네일(.pr_img) 클릭하면 팝업 열기
+        $(".pr_img").click(function() {
+            $(this).closest(".project-item").addClass("active");
+        });
+
+        // X 버튼(.btn_close) 클릭하면 팝업 닫기
+        // '제자리 팝업'에서는 바깥을 누르는 기능이 없으므로, X버튼만으로 닫습니다.
+        $(".btn_close").click(function(e) {
+            e.stopPropagation();
+            $(this).closest(".project-item").removeClass("active");
+        });
+    </script>
+</body>
+</html>
