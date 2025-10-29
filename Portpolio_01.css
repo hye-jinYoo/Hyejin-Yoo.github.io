@@ -160,50 +160,46 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.5;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 글씨가 잘보이도록 배경처리 */
 }
+/* ========== 팝업 스타일 (이 부분을 통째로 교체하세요) ========== */
 
+/* 1. 팝업 배경 (평소엔 숨겨져 있음) */
 .new_img {
-  display: none; /* 평소에는 숨겨둠 */
-  position: fixed; /* 화면에 고정 */
+  display: none; /* ★★★ 가장 중요: 평소에는 반드시 숨겨둡니다 ★★★ */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
-  z-index: 100; /* 다른 요소들보다 항상 위에 있도록 z-index 값을 높임 */
+  z-index: 100;
 
-  /* ↓ 자식 요소(.inner)를 중앙 정렬하기 위한 Flexbox 설정 */
-  display: flex;
+  /* ↓ 팝업이 나타날 때, 내용물을 중앙 정렬시키는 설정 */
   justify-content: center;
   align-items: center;
 }
 
-/* 2. 팝업 활성화 (JS에서 .active가 붙으면 팝업을 보여줌) */
-/* display:none 이었던 .new_img를 보여주기만 하면 되므로, 별도 CSS 규칙이 필요 없습니다. */
-/* JS가 클래스를 추가/삭제하면서 위의 display 속성을 직접 제어할 것입니다. */
-
-
-/* 3. 팝업 내용물 (이미지가 들어가는 흰색 박스) */
+/* 2. 팝업 내용물 (이미지가 들어가는 박스) */
 .new_img .inner {
-  position: relative; /* X버튼 위치의 기준점이 됨 */
-  max-width: 800px;  /* 최대 가로폭 제한 */
-  width: 90%; /* 화면이 작을땐 90% 너비 */
-  max-height: 90vh; /* 최대 세로높이 제한 (화면 높이의 90%) */
-  overflow-y: auto;   /* 내용이 길어지면 내부 스크롤 생성 */
+  position: relative;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
   background-color: #1a1a1a;
   border-radius: 10px;
-  padding: 20px; /* 이미지 주변에 약간의 여백 */
+  padding: 20px;
   box-sizing: border-box;
 }
 
-/* 4. 팝업 안의 이미지 */
+/* 3. 팝업 안의 이미지 */
 .new_img .inner img {
-  max-width: 100%; /* 이미지가 .inner 박스보다 커지지 않도록 함 */
+  max-width: 100%;
   display: block;
 }
 
-/* 5. 닫기(X) 버튼 */
+/* 4. 닫기(X) 버튼 */
 .new_img .btn_close {
-  position: absolute; /* .inner를 기준으로 위치 설정 */
+  position: absolute;
   top: 15px;
   right: 15px;
   z-index: 20;
@@ -215,6 +211,11 @@ a { color: inherit; text-decoration: none; }
   transition: transform 0.2s ease;
   padding: 5px;
 }
+
+.new_img .btn_close:hover {
+  transform: rotate(90deg);
+}
+
 .new_img .btn_close:hover {
   transform: rotate(90deg);
 }

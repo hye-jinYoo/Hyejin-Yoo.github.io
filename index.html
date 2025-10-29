@@ -139,47 +139,31 @@
             </div>
         </main>
     </div>
-
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 이 부분을 찾아서 아래 코드로 전체 교체해주세요 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
     // 1. 썸네일(.pr_img) 클릭 시 팝업 열기
     $(".pr_img").click(function() {
-        // 다른 팝업이 열려있을 수 있으니 먼저 모든 active를 지웁니다.
-        $(".project-item").removeClass("active"); 
-        
-        // 클릭한 썸네일의 부모(.project-item)에 active 클래스를 추가해 팝업을 보여줍니다.
-        var targetPopup = $(this).closest(".project-item");
-        targetPopup.addClass("active");
-        
-        // CSS의 display 속성을 직접 'flex'로 변경해줍니다.
-        targetPopup.find(".new_img").css("display", "flex");
+        // 클릭한 썸네일에 해당하는 팝업(.new_img)을 찾아서
+        // display 속성을 'flex'로 바꿔 화면에 보여줍니다.
+        $(this).closest(".project-item").find(".new_img").css("display", "flex");
     });
 
     // 2. 닫기 버튼(.btn_close) 클릭 시 팝업 닫기
     $(".btn_close").click(function(e) {
-        // 배경 클릭 이벤트가 같이 실행되지 않도록 이벤트 전파를 막습니다.
-        e.stopPropagation(); 
-        
-        // 부모 팝업의 display 속성을 'none'으로 바꿔서 숨깁니다.
+        // 이벤트가 부모로 전달되는 것을 막습니다 (stopPropagation).
+        e.stopPropagation();
+        // 현재 팝업을 찾아서 display 속성을 'none'으로 바꿔 숨깁니다.
         $(this).closest(".new_img").css("display", "none");
-        // active 클래스도 제거합니다.
-        $(this).closest(".project-item").removeClass("active");
     });
 
     // 3. 어두운 배경(.new_img) 클릭 시 팝업 닫기
     $(".new_img").click(function(e) {
-        // 부모 팝업의 display 속성을 'none'으로 바꿔서 숨깁니다.
-        $(this).css("display", "none");
-        // active 클래스도 제거합니다.
-        $(this).closest(".project-item").removeClass("active");
-    });
-    
-    // 4. 팝업 내용(.inner) 클릭 시 닫히는 것 방지
-    // 배경을 클릭하면 닫히지만, 그 안의 내용(이미지)을 클릭했을 땐 닫히면 안됩니다.
-    $(".new_img .inner").click(function(e) {
-        // 클릭 이벤트가 배경(.new_img)으로 전파되는 것을 막습니다.
-        e.stopPropagation();
+        // 클릭된 대상이 배경 자신일 때만 닫히도록 합니다.
+        // (이미지를 클릭했을 때는 닫히지 않게 하기 위함)
+        if (e.target === this) {
+            $(this).css("display", "none");
+        }
     });
 </script>
 </body>
