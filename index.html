@@ -145,11 +145,12 @@
         </main>
     </div>
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
     $(function(){
     // 썸네일(.pr_img) 클릭하면 팝업 열기
         $(".pr_img").click(function() {
+            alert();
             $(this).closest(".project-item").addClass("active");
         });
 
