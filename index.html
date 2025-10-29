@@ -1,3 +1,4 @@
+<!-- index.html 전체 코드: 기존 내용을 모두 지우고 아래 코드로 교체하세요. -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,7 +18,6 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="#">JIN Portfolio</a></li>
-
                 </ul>
             </nav>
         </header>
@@ -35,7 +35,7 @@
         </div>
 
         <section class="poster-section">
-
+            <!-- 포스터 아이템이 필요하다면 여기에 추가 -->
         </section>
 
         <main class="project-grid">
@@ -46,7 +46,8 @@
                     CESCO Homepage Renewal<br>2025
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main1.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main1.png"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -55,7 +56,8 @@
                     CESCO Shopping Mall App<br>2025
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main2.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main2.png"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -64,7 +66,8 @@
                     CESCO Digital Guide<br>2025
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main3.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main3.jpg"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             
@@ -75,7 +78,8 @@
                     CESCO Product QR<br>2025
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main4.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main4.jpg"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -86,9 +90,9 @@
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main5.jpg">
-                        <img src="./img/main5_1.jpg" style="margin-top: 20px;">
-                        <button type="button" class="btn_close">&#x2715;</button>
+                        <img src="./img/main5_1.jpg">
                     </div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -99,9 +103,9 @@
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main6.jpg">
-                        <img src="./img/main6_1.jpg" style="margin-top: 20px;">
-                        <button type="button" class="btn_close">&#x2715;</button>
+                        <img src="./img/main6_1.jpg">
                     </div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
 
@@ -114,9 +118,9 @@
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main7.jpeg">
-                        <img src="./img/main7_1.jpeg" style="margin-top: 20px;">
-                        <button type="button" class="btn_close">&#x2715;</button>
+                        <img src="./img/main7_1.jpeg">
                     </div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -125,7 +129,8 @@
                     CESCO Homepage<br>2022
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main8.jpg"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main8.jpg"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
             <div class="project-item">
@@ -134,38 +139,41 @@
                     CESCO Mall Renewal 9<br>2022
                 </div>
                 <div class="new_img">
-                    <div class="inner"><img src="./img/main9.png"><button type="button" class="btn_close">&#x2715;</button></div>
+                    <div class="inner"><img src="./img/main9.png"></div>
+                    <button type="button" class="btn_close">&#x2715;</button>
                 </div>
             </div>
         </main>
     </div>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-    // 1. 썸네일(.pr_img) 클릭 시 팝업 열기
-    $(".pr_img").click(function() {
-        // ★★★ 핵심: 먼저 모든 팝업(.new_img)을 닫습니다. ★★★
-        $(".new_img").css("display", "none");
 
-        // 그 다음에, 클릭한 썸네일에 해당하는 팝업만 찾아서
-        // display 속성을 'flex'로 바꿔 화면에 보여줍니다.
-        $(this).closest(".project-item").find(".new_img").css("display", "flex");
-    });
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        // 1. 썸네일(.pr_img) 클릭: 팝업 열기
+        $(".pr_img").click(function() {
+            // 먼저 모든 팝업의 활성 상태(.active)를 제거합니다.
+            $(".project-item").removeClass("active");
+            // 그 다음, 클릭한 썸네일의 부모(.project-item)에만 .active 클래스를 추가합니다.
+            $(this).closest(".project-item").addClass("active");
+        });
 
-    // 2. 닫기 버튼(.btn_close) 클릭 시 팝업 닫기
-    $(".btn_close").click(function(e) {
-        // 이벤트가 부모로 전달되는 것을 막습니다 (stopPropagation).
-        e.stopPropagation();
-        // 현재 팝업을 찾아서 display 속성을 'none'으로 바꿔 숨깁니다.
-        $(this).closest(".new_img").css("display", "none");
-    });
+        // 2. 닫기 버튼(.btn_close) 클릭: 팝업 닫기
+        $(".btn_close").click(function() {
+            // 현재 팝업의 부모(.project-item)에서 .active 클래스를 제거합니다.
+            $(this).closest(".project-item").removeClass("active");
+        });
 
-    // 3. 어두운 배경(.new_img) 클릭 시 팝업 닫기
-    $(".new_img").click(function(e) {
-        // 클릭된 대상이 배경 자신일 때만 닫히도록 합니다.
-        if (e.target === this) {
-            $(this).css("display", "none");
-        }
-    });
-</script>
+        // 3. 어두운 배경(.new_img) 클릭: 팝업 닫기
+        $(".new_img").click(function() {
+            // 현재 팝업의 부모(.project-item)에서 .active 클래스를 제거합니다.
+            $(this).closest(".project-item").removeClass("active");
+        });
+
+        // 4. 팝업 내용(.inner) 클릭 시 닫히는 것 방지 (가장 중요!)
+        // 이 코드가 없으면 팝업 안의 이미지를 클릭해도 팝업이 닫혀버립니다.
+        $(".new_img .inner").click(function(e) {
+            // 클릭 이벤트가 배경(.new_img)으로 전달되는 것을 막습니다.
+            e.stopPropagation();
+        });
+    </script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+/* Portpolio_01.css 전체 코드: 기존 내용을 모두 지우고 아래 코드로 교체하세요. */
+
 /* --- 기본 스타일 --- */
 body, html {
   margin: 0;
@@ -13,7 +15,6 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
-  /* ▼▼▼ 배경 이미지를 고정시켜서 스크롤해도 움직이지 않게 합니다 ▼▼▼ */
   background-image: url('./img/index_01.jpg');
   background-size: cover;
   background-position: center top;
@@ -23,28 +24,13 @@ a { color: inherit; text-decoration: none; }
   color: white;
 }
 
-
-/* --- 1. 상단 이미지 영역 스타일 --- */
-.top-banner {
-  width: 100%;
-  height: 800px; 
-  box-sizing: border-box;
-  background-image: url('./img/index_01.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 40px;
-  position: relative;
-  overflow: hidden; /* ★★★ 애니메이션이 밖으로 나가지 않게 하기 위해 추가 ★★★ */
-}
-
-
 /* --- 상단 메뉴 --- */
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  max-width: 1500px; /* 그리드와 너비를 맞춤 */
+  max-width: 1500px;
   margin: 0 auto;
 }
 .logo img {
@@ -56,70 +42,60 @@ a { color: inherit; text-decoration: none; }
 .main-nav ul { display: flex; gap: 30px; }
 .main-nav a { font-weight: 500; font-size: 1rem; }
 
-
-
-
+/* --- 타이틀 애니메이션 --- */
 .title_copy {
   position: absolute;
   top: 25vh;
-  left: 0; /* 왼쪽 끝에서 시작하도록 변경 */
-  width: 100%; /* 너비를 100%로 설정 */
+  left: 0;
+  width: 100%;
   font-size: 5.0vw;
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
   z-index: 10;
+  pointer-events: none; /* 텍스트가 다른 요소 클릭을 방해하지 않도록 함 */
 }
-
 .marquee-line {
   width: 100%;
-  overflow: hidden; /* 각 줄마다 넘치는 텍스트를 숨김 */
-  padding: 0.1em 0; /* 줄 사이 간격 */
+  overflow: hidden;
+  padding: 0.1em 0;
 }
-
 .marquee-line span {
-  display: inline-block; /* 애니메이션을 적용하기 위함 */
-  padding-left: 100%; /* 애니메이션 시작 위치를 오른쪽 밖으로 설정 */
-  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 함 */
-  /* 애니메이션 효과 적용 */
+  display: inline-block;
+  padding-left: 100%;
+  white-space: nowrap;
   animation: marquee-animation 20s linear infinite;
 }
-
-/* ★★★ 두 번째, 세 번째 줄은 반대 방향으로 움직이게 설정 ★★★ */
 .marquee-line:nth-child(2) span {
   animation-name: marquee-animation-reverse;
-  animation-duration: 25s; /* 길이에 맞춰 속도 조절 */
+  animation-duration: 25s;
 }
 .marquee-line:nth-child(3) span {
-  animation-duration: 18s; /* 길이에 맞춰 속도 조절 */
+  animation-duration: 18s;
 }
-
-
-/* ★★★ 부드럽게 움직이는 애니메이션 효과 정의 ★★★ */
 @keyframes marquee-animation {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
-
 @keyframes marquee-animation-reverse {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(0); }
 }
+
 /* --- 포스터 --- */
 .poster-section {
   position: relative;
-  z-index: 1; /* 그리드보다 뒤에 있도록 설정 */
+  z-index: 1;
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 60px 0;
-  /* ▼▼▼ 이 부분이 겹침 효과의 핵심입니다! (그리드를 위로 끌어올림) ▼▼▼ */
   margin-bottom: -160px; 
   margin-top: 800px; 
 }
 .poster-item {
   width: 100%;
-  max-width: 280px; /* 포스터 크기를 살짝 키움 */
+  max-width: 280px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .poster-item img { width: 100%; display: block; }
@@ -127,18 +103,18 @@ a { color: inherit; text-decoration: none; }
 /* --- 3x3 프로젝트 그리드 --- */
 .project-grid {
   position: relative;
-  z-index: 2; /* 포스터보다 위에 있도록 설정 */
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
-  max-width: 1500px; /* 그리드 전체 너비를 키움 */
+  max-width: 1500px;
   margin: 0 auto;
   padding-top: 40px;
 }
 .project-item {
-  position: relative; /* '제자리 팝업'의 기준점이 됩니다 */
+  position: relative;
   border-radius: 15px;
-  overflow: hidden; /* 팝업이 둥근 모서리 밖으로 나가지 않도록 */
+  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease;
 }
@@ -146,7 +122,6 @@ a { color: inherit; text-decoration: none; }
 .pr_img { cursor: pointer; }
 .pr_img img { width: 100%; display: block; }
 
-/* ▼▼▼ 텍스트를 이미지 위에 오버레이 시킵니다 ▼▼▼ */
 .pr_info {
   position: absolute;
   bottom: 0;
@@ -158,11 +133,16 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
   padding: 15px 10px;
   line-height: 1.5;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 글씨가 잘보이도록 배경처리 */
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
+
+
+/* ======================================================= */
+/* =========== 최종 팝업 스타일 (가장 중요!) ============ */
+/* ======================================================= */
+
 /* 1. 팝업 배경 (어두운 막) */
 .new_img {
-  display: none;      /* 평소에는 숨김 */
   position: fixed;
   top: 0;
   left: 0;
@@ -170,54 +150,79 @@ a { color: inherit; text-decoration: none; }
   height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   z-index: 100;
+  padding: 5vh 5vw;
+  box-sizing: border-box;
   
-  /* ↓ JS가 display:flex 로 바꿔주면 내용물을 중앙 정렬 */
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  /* ▼▼▼ 부드러운 등장/사라짐 효과 ▼▼▼ */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* 2. 팝업 내용물 (이미지를 감싸는 틀) */
 .new_img .inner {
   position: relative;
-  width: 85vw;          /* 화면 너비의 85% */
-  height: 85vh;         /* 화면 높이의 85% */
-  max-width: 1200px;    /* 너무 넓어지는 것 방지 */
+  width: 100%;
+  height: 100%;
+  max-width: 1200px; /* PC에서 최대 너비 */
   
-  /* ↓ 내부 이미지를 중앙 정렬 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow-y: auto; /* 이미지가 많으면 내부 스크롤 */
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* ▼▼▼ 부드러운 확대/축소 효과 ▼▼▼ */
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
 }
 
 /* 3. 팝업 안의 이미지 */
 .new_img .inner img {
   max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* 이미지 비율 유지 */
   display: block;
+  margin: 0 auto;
+}
+.new_img .inner img + img {
+  margin-top: 20px;
 }
 
-/* 4. 닫기(X) 버튼 */
+/* 4. 닫기 버튼 */
 .new_img .btn_close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 20;
+  position: fixed; /* 화면 기준 고정 */
+  top: 20px;
+  right: 20px;
+  z-index: 120;
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.5);
   border: none;
-  font-size: 32px; /* 버튼 크기를 조금 키워 잘 보이게 */
+  border-radius: 50%;
+  font-size: 20px;
   cursor: pointer;
-  transition: transform 0.2s ease;
-  padding: 10px; /* 클릭 영역을 넓힘 */
-  line-height: 1;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
 }
-
 .new_img .btn_close:hover {
   transform: rotate(90deg);
+  background-color: rgba(255,255,255,0.2);
 }
+
+/* ★★★ JS가 .active 클래스를 추가했을 때의 변화 ★★★ */
+.project-item.active .new_img {
+  opacity: 1;
+  visibility: visible;
+}
+.project-item.active .new_img .inner {
+  transform: scale(1);
+}
+
 
 /* --- 모바일 화면 대응 --- */
 @media screen and (max-width: 900px) {
