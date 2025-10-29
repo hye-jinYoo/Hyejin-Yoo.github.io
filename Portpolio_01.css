@@ -163,15 +163,19 @@ a { color: inherit; text-decoration: none; }
 
 
 .new_img {
-display: none; 
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 10;
-background-color: rgba(0, 0, 0, 0.85);
+    display: none; /* 평소에는 숨겨둠 */
+    position: fixed; /* 화면 전체에 고정 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
+.project-item.active .new_img {
+    display: block; /* active 클래스가 붙으면 보여줌 */
+}
 
 .project-item.active .new_img {
 display: block;
