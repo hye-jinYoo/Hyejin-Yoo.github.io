@@ -51,7 +51,6 @@ a { color: inherit; text-decoration: none; }
   position: relative; z-index: 2; display: grid;
   grid-template-columns: repeat(3, 1fr); gap: 50px;
   max-width: 1500px; margin: 0 auto;
-  /* ▼▼▼ 사라졌던 상단 여백 복구! ▼▼▼ */
   padding-top: 850px; 
 }
 .project-item {
@@ -75,17 +74,14 @@ a { color: inherit; text-decoration: none; }
 
 /* 1. 팝업 배경 (어두운 막) */
 .new_img {
+  /* ★★★ 평소에는 아예 존재하지 않도록 설정 (깜빡임 원천 방지) ★★★ */
+  display: none; 
+  
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   z-index: 100;
   padding: 5vh 5vw; box-sizing: border-box;
-  display: flex; justify-content: center; align-items: center;
-  
-  /* ▼▼▼ 부드러운 효과를 위한 초기 상태 ▼▼▼ */
-  opacity: 0;
-  visibility: hidden; /* ★ 평소엔 안보이고, 클릭도 안됨 */
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
 /* 2. 팝업 내용물 (이미지를 감싸는 틀) */
@@ -96,10 +92,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   overflow-y: auto;
   padding: 20px; box-sizing: border-box;
-  
-  /* ▼▼▼ 부드러운 효과를 위한 초기 상태 ▼▼▼ */
-  transform: scale(0.9);
-  transition: transform 0.3s ease;
 }
 
 /* 3. 팝업 안의 이미지 */
@@ -124,13 +116,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ★★★ JS가 .active 클래스를 추가했을 때의 변화 (가장 중요) ★★★ */
 .project-item.active > .new_img {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
+  /* ★★★ 팝업을 화면에 즉시 보여줌 (중앙 정렬) ★★★ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.project-item.active .new_img .inner {
-  transform: scale(1);
-}
+
 
 /* --- 반응형 --- */
 @media screen and (max-width: 900px) {
