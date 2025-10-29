@@ -174,11 +174,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .project-item.active .new_img {
-    display: block; /* active 클래스가 붙으면 보여줌 */
-}
-
-.project-item.active .new_img {
-display: block;
+    display: flex; /* block 대신 flex로 변경 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
 }
 
 

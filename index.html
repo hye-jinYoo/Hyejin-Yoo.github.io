@@ -142,15 +142,21 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-    // 썸네일(.pr_img) 클릭하면 팝업 열기
+    // 썸네일(.pr_img) 클릭 시
     $(".pr_img").click(function() {
+        // 먼저 모든 project-item에서 'active' 클래스를 제거합니다.
+        $(".project-item").removeClass("active"); 
+        
+        // 그 다음에 클릭한 이미지의 부모인 project-item에만 'active' 클래스를 추가합니다.
         $(this).closest(".project-item").addClass("active");
     });
 
-    // X 버튼(.btn_close) 클릭하면 팝업 닫기
-    // '제자리 팝업'에서는 바깥을 누르는 기능이 없으므로, X버튼만으로 닫습니다.
+    // X 버튼(.btn_close) 클릭 시
     $(".btn_close").click(function(e) {
-        e.stopPropagation();
+        // 이벤트 버블링을 막아 팝업의 다른 부분이 클릭되는 것을 방지합니다.
+        e.stopPropagation(); 
+        
+        // 현재 열려있는 팝업을 닫습니다.
         $(this).closest(".project-item").removeClass("active");
     });
 </script>
