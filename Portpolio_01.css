@@ -160,11 +160,9 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.5;
   background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 글씨가 잘보이도록 배경처리 */
 }
-/* ========== 팝업 스타일 (이 부분을 통째로 교체하세요) ========== */
-
-/* 1. 팝업 배경 (평소엔 숨겨져 있음) */
+/* 1. 팝업 배경 (어두운 막) */
 .new_img {
-  display: none; /* ★★★ 가장 중요: 평소에는 반드시 숨겨둡니다 ★★★ */
+  display: none;      /* 평소에는 숨김 */
   position: fixed;
   top: 0;
   left: 0;
@@ -172,28 +170,32 @@ a { color: inherit; text-decoration: none; }
   height: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   z-index: 100;
-
-  /* ↓ 팝업이 나타날 때, 내용물을 중앙 정렬시키는 설정 */
+  
+  /* ↓ JS가 display:flex 로 바꿔주면 내용물을 중앙 정렬 */
   justify-content: center;
   align-items: center;
 }
 
-/* 2. 팝업 내용물 (이미지가 들어가는 박스) */
+/* 2. 팝업 내용물 (이미지를 감싸는 틀) */
 .new_img .inner {
   position: relative;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 85vw;          /* 화면 너비의 85% */
+  height: 85vh;         /* 화면 높이의 85% */
+  max-width: 1200px;    /* 너무 넓어지는 것 방지 */
+  
+  /* ↓ 내부 이미지를 중앙 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 3. 팝업 안의 이미지 */
 .new_img .inner img {
   max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* 이미지 비율 유지 */
   display: block;
 }
 
@@ -206,51 +208,16 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   background-color: transparent;
   border: none;
-  font-size: 24px;
+  font-size: 32px; /* 버튼 크기를 조금 키워 잘 보이게 */
   cursor: pointer;
   transition: transform 0.2s ease;
-  padding: 5px;
+  padding: 10px; /* 클릭 영역을 넓힘 */
+  line-height: 1;
 }
 
 .new_img .btn_close:hover {
   transform: rotate(90deg);
 }
-
-.new_img .btn_close:hover {
-  transform: rotate(90deg);
-}
-
-
-.project-item.active .new_img {
-    display: flex; /* block 대신 flex로 변경 */
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-}
-
-
-.project-item.active .new_img { display: block; } /* flex 대신 block으로 */
-
-.new_img .inner {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto; /* 내용이 길면 스크롤 */
-}
-.new_img .inner img { width: 100%; display: block; }
-
-.new_img .btn_close {
-  position: absolute; /* fixed가 아닌 absolute로 변경! */
-  top: 15px;
-  right: 15px;
-  z-index: 20;
-  color: #fff;
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  padding: 5px;
-}
-.new_img .btn_close:hover { transform: rotate(90deg); }
 
 /* --- 모바일 화면 대응 --- */
 @media screen and (max-width: 900px) {
