@@ -46,14 +46,13 @@ a { color: inherit; text-decoration: none; }
 @keyframes marquee-animation { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 @keyframes marquee-animation-reverse { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
 
-/* --- 포스터 --- */
-.poster-section { display: none; } /* 일단 숨김 처리, 필요 시 flex로 변경 */
-
 /* --- 프로젝트 그리드 --- */
 .project-grid {
   position: relative; z-index: 2; display: grid;
   grid-template-columns: repeat(3, 1fr); gap: 50px;
-  max-width: 1500px; margin: 0 auto; padding-top: 40px;
+  max-width: 1500px; margin: 0 auto;
+  /* ▼▼▼ 사라졌던 상단 여백 복구! ▼▼▼ */
+  padding-top: 850px; 
 }
 .project-item {
   position: relative; border-radius: 15px;
@@ -82,24 +81,22 @@ a { color: inherit; text-decoration: none; }
   z-index: 100;
   padding: 5vh 5vw; box-sizing: border-box;
   display: flex; justify-content: center; align-items: center;
-  cursor: pointer; /* 배경 클릭 가능 표시 */
-
+  
   /* ▼▼▼ 부드러운 효과를 위한 초기 상태 ▼▼▼ */
   opacity: 0;
-  visibility: hidden;
+  visibility: hidden; /* ★ 평소엔 안보이고, 클릭도 안됨 */
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
 /* 2. 팝업 내용물 (이미지를 감싸는 틀) */
 .new_img .inner {
   width: 100%; height: 100%;
-  max-width: 1200px; /* PC에서 최대 너비 */
+  max-width: 1200px;
   background-color: #1a1a1a;
   border-radius: 10px;
-  overflow-y: auto; /* 이미지가 많으면 내부 스크롤 */
+  overflow-y: auto;
   padding: 20px; box-sizing: border-box;
-  cursor: default; /* 내용물 위에서는 일반 커서 */
-
+  
   /* ▼▼▼ 부드러운 효과를 위한 초기 상태 ▼▼▼ */
   transform: scale(0.9);
   transition: transform 0.3s ease;
@@ -109,7 +106,7 @@ a { color: inherit; text-decoration: none; }
 .new_img .inner img {
   max-width: 100%; display: block; margin: 0 auto;
 }
-.new_img .inner img + img { margin-top: 20px; } /* 이미지 사이 간격 */
+.new_img .inner img + img { margin-top: 20px; }
 
 /* 4. 닫기 버튼 */
 .new_img .btn_close {
@@ -135,14 +132,13 @@ a { color: inherit; text-decoration: none; }
   transform: scale(1);
 }
 
-
 /* --- 반응형 --- */
 @media screen and (max-width: 900px) {
-  .project-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .project-grid { grid-template-columns: repeat(2, 1fr); padding-top: 60vh; gap: 30px; }
 }
 @media screen and (max-width: 600px) {
   .wrapper { padding: 40px 15px 15px 15px; }
-  .project-grid { grid-template-columns: 1fr; gap: 20px; }
+  .project-grid { grid-template-columns: 1fr; padding-top: 50vh; gap: 20px; }
   .main-header { padding: 10px 0; }
   .main-nav { display: none; }
 }

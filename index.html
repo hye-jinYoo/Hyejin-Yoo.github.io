@@ -28,8 +28,6 @@
             <div class="marquee-line"><span>DESIGN BY JIN</span></div>
         </div>
 
-        <section class="poster-section"></section>
-
         <main class="project-grid">
             <!-- 1행 -->
             <div class="project-item">
@@ -122,24 +120,42 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
+        // ★★★ 깜빡임 현상 방지를 위한 잠금 장치 변수 ★★★
+        let isClosing = false;
+
+        // 팝업을 닫는 공통 함수
+        function closePopup(element) {
+            if (isClosing) return; // 닫히는 중이면 아무것도 안함
+            isClosing = true; // 닫기 시작, 잠금!
+            
+            $(element).closest('.project-item').removeClass('active');
+
+            // CSS transition 시간(300ms) 후에 잠금을 해제
+            setTimeout(function() {
+                isClosing = false;
+            }, 300);
+        }
+
         // 1. 썸네일(.pr_img) 클릭 -> 팝업 열기
         $('.pr_img').on('click', function() {
-            // 다른 팝업이 열려있으면 닫고, 현재 팝업을 연다
-            $('.project-item').removeClass('active');
-            $(this).closest('.project-item').addClass('active');
+            if (isClosing) return; // 닫히는 중에는 열리지 않음
+            
+            let currentItem = $(this).closest('.project-item');
+            if (!currentItem.hasClass('active')) {
+                $('.project-item').removeClass('active');
+                currentItem.addClass('active');
+            }
         });
 
         // 2. 닫기 버튼(.btn_close) 클릭 -> 팝업 닫기
-        $('.btn_close').on('click', function(e) {
-            e.stopPropagation(); // ★★★ 이벤트 전파를 막아 깜빡임 현상 방지 ★★★
-            $(this).closest('.project-item').removeClass('active');
+        $('.btn_close').on('click', function() {
+            closePopup(this);
         });
 
         // 3. 어두운 배경(.new_img) 클릭 -> 팝업 닫기
         $('.new_img').on('click', function(e) {
-            // ★★★ 클릭된 대상이 배경 자신일 때만 닫고, 이벤트 전파 차단 ★★★
-            if (e.target === this) {
-                $(this).closest('.project-item').removeClass('active');
+            if (e.target === this) { // 배경 자신을 클릭했을 때만
+                closePopup(this);
             }
         });
     </script>
