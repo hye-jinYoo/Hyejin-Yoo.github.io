@@ -1,4 +1,4 @@
-<!-- index.html 전체 코드: 기존 내용을 모두 지우고 아래 코드로 교체하세요. -->
+<!-- index.html: 기존 내용을 모두 지우고 이 코드로 완전히 교체하세요. -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,28 +23,18 @@
         </header>
 
         <div class="title_copy">
-            <div class="marquee-line">
-                <span>CREATING WITH INTENT</span>
-            </div>
-            <div class="marquee-line">
-                <span>DESIGNING FOR IMPACT</span>
-            </div>
-            <div class="marquee-line">
-                <span>DESIGN BY JIN</span>
-            </div>
+            <div class="marquee-line"><span>CREATING WITH INTENT</span></div>
+            <div class="marquee-line"><span>DESIGNING FOR IMPACT</span></div>
+            <div class="marquee-line"><span>DESIGN BY JIN</span></div>
         </div>
 
-        <section class="poster-section">
-            <!-- 포스터 아이템이 필요하다면 여기에 추가 -->
-        </section>
+        <section class="poster-section"></section>
 
         <main class="project-grid">
             <!-- 1행 -->
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr01.jpg"></div>
-                <div class="pr_info">
-                    CESCO Homepage Renewal<br>2025
-                </div>
+                <div class="pr_info">CESCO Homepage Renewal<br>2025</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main1.png"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -52,9 +42,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr02.jpg"></div>
-                <div class="pr_info">
-                    CESCO Shopping Mall App<br>2025
-                </div>
+                <div class="pr_info">CESCO Shopping Mall App<br>2025</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main2.png"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -62,9 +50,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr03.jpg"></div>
-                <div class="pr_info">
-                    CESCO Digital Guide<br>2025
-                </div>
+                <div class="pr_info">CESCO Digital Guide<br>2025</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main3.jpg"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -74,9 +60,7 @@
             <!-- 2행 -->
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr04.jpg"></div>
-                <div class="pr_info">
-                    CESCO Product QR<br>2025
-                </div>
+                <div class="pr_info">CESCO Product QR<br>2025</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main4.jpg"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -84,9 +68,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr05.jpg"></div>
-                <div class="pr_info">
-                    CESCO Promotion<br>2025
-                </div>
+                <div class="pr_info">CESCO Promotion<br>2025</div>
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main5.jpg">
@@ -97,9 +79,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr06.jpg"></div>
-                <div class="pr_info">
-                    CESCO Service Report<br>2024
-                </div>
+                <div class="pr_info">CESCO Service Report<br>2024</div>
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main6.jpg">
@@ -112,9 +92,7 @@
             <!-- 3행 -->
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr07.jpg"></div>
-                <div class="pr_info">
-                    CESCO IOT App<br>2022
-                </div>
+                <div class="pr_info">CESCO IOT App<br>2022</div>
                 <div class="new_img">
                     <div class="inner">
                         <img src="./img/main7.jpeg">
@@ -125,9 +103,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr08.jpg"></div>
-                <div class="pr_info">
-                    CESCO Homepage<br>2022
-                </div>
+                <div class="pr_info">CESCO Homepage<br>2022</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main8.jpg"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -135,9 +111,7 @@
             </div>
             <div class="project-item">
                 <div class="pr_img"><img src="./img/pr09.jpg"></div>
-                <div class="pr_info">
-                    CESCO Mall Renewal 9<br>2022
-                </div>
+                <div class="pr_info">CESCO Mall Renewal 9<br>2022</div>
                 <div class="new_img">
                     <div class="inner"><img src="./img/main9.png"></div>
                     <button type="button" class="btn_close">&#x2715;</button>
@@ -148,31 +122,25 @@
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
-        // 1. 썸네일(.pr_img) 클릭: 팝업 열기
-        $(".pr_img").click(function() {
-            // 먼저 모든 팝업의 활성 상태(.active)를 제거합니다.
-            $(".project-item").removeClass("active");
-            // 그 다음, 클릭한 썸네일의 부모(.project-item)에만 .active 클래스를 추가합니다.
-            $(this).closest(".project-item").addClass("active");
+        // 1. 썸네일(.pr_img) 클릭 -> 팝업 열기
+        $('.pr_img').on('click', function() {
+            // 다른 팝업이 열려있으면 닫고, 현재 팝업을 연다
+            $('.project-item').removeClass('active');
+            $(this).closest('.project-item').addClass('active');
         });
 
-        // 2. 닫기 버튼(.btn_close) 클릭: 팝업 닫기
-        $(".btn_close").click(function() {
-            // 현재 팝업의 부모(.project-item)에서 .active 클래스를 제거합니다.
-            $(this).closest(".project-item").removeClass("active");
+        // 2. 닫기 버튼(.btn_close) 클릭 -> 팝업 닫기
+        $('.btn_close').on('click', function(e) {
+            e.stopPropagation(); // ★★★ 이벤트 전파를 막아 깜빡임 현상 방지 ★★★
+            $(this).closest('.project-item').removeClass('active');
         });
 
-        // 3. 어두운 배경(.new_img) 클릭: 팝업 닫기
-        $(".new_img").click(function() {
-            // 현재 팝업의 부모(.project-item)에서 .active 클래스를 제거합니다.
-            $(this).closest(".project-item").removeClass("active");
-        });
-
-        // 4. 팝업 내용(.inner) 클릭 시 닫히는 것 방지 (가장 중요!)
-        // 이 코드가 없으면 팝업 안의 이미지를 클릭해도 팝업이 닫혀버립니다.
-        $(".new_img .inner").click(function(e) {
-            // 클릭 이벤트가 배경(.new_img)으로 전달되는 것을 막습니다.
-            e.stopPropagation();
+        // 3. 어두운 배경(.new_img) 클릭 -> 팝업 닫기
+        $('.new_img').on('click', function(e) {
+            // ★★★ 클릭된 대상이 배경 자신일 때만 닫고, 이벤트 전파 차단 ★★★
+            if (e.target === this) {
+                $(this).closest('.project-item').removeClass('active');
+            }
         });
     </script>
 </body>
