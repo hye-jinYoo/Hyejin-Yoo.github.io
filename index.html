@@ -139,12 +139,14 @@
             </div>
         </main>
     </div>
-<!-- 이 부분을 찾아서 아래 코드로 전체 교체해주세요 -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
     // 1. 썸네일(.pr_img) 클릭 시 팝업 열기
     $(".pr_img").click(function() {
-        // 클릭한 썸네일에 해당하는 팝업(.new_img)을 찾아서
+        // ★★★ 핵심: 먼저 모든 팝업(.new_img)을 닫습니다. ★★★
+        $(".new_img").css("display", "none");
+
+        // 그 다음에, 클릭한 썸네일에 해당하는 팝업만 찾아서
         // display 속성을 'flex'로 바꿔 화면에 보여줍니다.
         $(this).closest(".project-item").find(".new_img").css("display", "flex");
     });
@@ -160,7 +162,6 @@
     // 3. 어두운 배경(.new_img) 클릭 시 팝업 닫기
     $(".new_img").click(function(e) {
         // 클릭된 대상이 배경 자신일 때만 닫히도록 합니다.
-        // (이미지를 클릭했을 때는 닫히지 않게 하기 위함)
         if (e.target === this) {
             $(this).css("display", "none");
         }
