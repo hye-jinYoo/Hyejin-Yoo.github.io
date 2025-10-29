@@ -1,16 +1,19 @@
-/* Portpolio_01.css: 기존 내용을 모두 지우고 이 코드로 완전히 교체하세요. */
-
-/* --- 기본 & 레이아웃 --- */
+/* --- 기본 스타일 --- */
 body, html {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: "Pretendard", sans-serif;
   background-color: #1a1a1a;
 }
 ul, li { list-style: none; margin: 0; padding: 0; }
 a { color: inherit; text-decoration: none; }
+
+/* --- 전체 배경과 레이아웃 --- */
 .wrapper {
-  width: 100%; min-height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
+  /* ▼▼▼ 배경 이미지를 고정시켜서 스크롤해도 움직이지 않게 합니다 ▼▼▼ */
   background-image: url('./img/index_01.jpg');
   background-size: cover;
   background-position: center top;
@@ -19,117 +22,194 @@ a { color: inherit; text-decoration: none; }
   padding: 80px 40px 40px 40px;
   color: white;
 }
-/* --- 헤더 --- */
+
+
+/* --- 1. 상단 이미지 영역 스타일 --- */
+.top-banner {
+  width: 100%;
+  height: 800px; 
+  box-sizing: border-box;
+  background-image: url('./img/index_01.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden; /* ★★★ 애니메이션이 밖으로 나가지 않게 하기 위해 추가 ★★★ */
+}
+
+
+/* --- 상단 메뉴 --- */
 .main-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 0; max-width: 1500px; margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  max-width: 1500px; /* 그리드와 너비를 맞춤 */
+  margin: 0 auto;
 }
 .logo img {
-  width: 50px; height: 50px; border-radius: 50%; border: 2px solid white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid white;
 }
 .main-nav ul { display: flex; gap: 30px; }
 .main-nav a { font-weight: 500; font-size: 1rem; }
 
-/* --- 타이틀 애니메이션 --- */
+
+
+
 .title_copy {
-  position: absolute; top: 25vh; left: 0; width: 100%;
-  font-size: 5.0vw; font-weight: 400; line-height: 1.1;
-  color: #fff; z-index: 10; pointer-events: none;
+  position: absolute;
+  top: 25vh;
+  left: 0; /* 왼쪽 끝에서 시작하도록 변경 */
+  width: 100%; /* 너비를 100%로 설정 */
+  font-size: 5.0vw;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff;
+  z-index: 10;
 }
-.marquee-line { width: 100%; overflow: hidden; padding: 0.1em 0; }
+
+.marquee-line {
+  width: 100%;
+  overflow: hidden; /* 각 줄마다 넘치는 텍스트를 숨김 */
+  padding: 0.1em 0; /* 줄 사이 간격 */
+}
+
 .marquee-line span {
-  display: inline-block; padding-left: 100%; white-space: nowrap;
+  display: inline-block; /* 애니메이션을 적용하기 위함 */
+  padding-left: 100%; /* 애니메이션 시작 위치를 오른쪽 밖으로 설정 */
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 함 */
+  /* 애니메이션 효과 적용 */
   animation: marquee-animation 20s linear infinite;
 }
-.marquee-line:nth-child(2) span { animation-name: marquee-animation-reverse; animation-duration: 25s; }
-.marquee-line:nth-child(3) span { animation-duration: 18s; }
-@keyframes marquee-animation { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-@keyframes marquee-animation-reverse { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
 
-/* --- 프로젝트 그리드 --- */
+/* ★★★ 두 번째, 세 번째 줄은 반대 방향으로 움직이게 설정 ★★★ */
+.marquee-line:nth-child(2) span {
+  animation-name: marquee-animation-reverse;
+  animation-duration: 25s; /* 길이에 맞춰 속도 조절 */
+}
+.marquee-line:nth-child(3) span {
+  animation-duration: 18s; /* 길이에 맞춰 속도 조절 */
+}
+
+
+/* ★★★ 부드럽게 움직이는 애니메이션 효과 정의 ★★★ */
+@keyframes marquee-animation {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-animation-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+/* --- 포스터 --- */
+.poster-section {
+  position: relative;
+  z-index: 1; /* 그리드보다 뒤에 있도록 설정 */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  /* ▼▼▼ 이 부분이 겹침 효과의 핵심입니다! (그리드를 위로 끌어올림) ▼▼▼ */
+  margin-bottom: -160px; 
+  margin-top: 800px; 
+}
+.poster-item {
+  width: 100%;
+  max-width: 280px; /* 포스터 크기를 살짝 키움 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.poster-item img { width: 100%; display: block; }
+
+/* --- 3x3 프로젝트 그리드 --- */
 .project-grid {
-  position: relative; z-index: 2; display: grid;
-  grid-template-columns: repeat(3, 1fr); gap: 50px;
-  max-width: 1500px; margin: 0 auto;
-  padding-top: 850px; 
+  position: relative;
+  z-index: 2; /* 포스터보다 위에 있도록 설정 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  max-width: 1500px; /* 그리드 전체 너비를 키움 */
+  margin: 0 auto;
+  padding-top: 40px;
 }
 .project-item {
-  position: relative; border-radius: 15px;
-  overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  position: relative; /* '제자리 팝업'의 기준점이 됩니다 */
+  border-radius: 15px;
+  overflow: hidden; /* 팝업이 둥근 모서리 밖으로 나가지 않도록 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease;
 }
 .project-item:hover { transform: translateY(-10px); }
 .pr_img { cursor: pointer; }
 .pr_img img { width: 100%; display: block; }
+
+/* ▼▼▼ 텍스트를 이미지 위에 오버레이 시킵니다 ▼▼▼ */
 .pr_info {
-  position: absolute; bottom: 0; left: 0; width: 100%;
-  box-sizing: border-box; color: #fff; font-size: 12px;
-  text-align: center; padding: 15px 10px; line-height: 1.5;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 15px 10px;
+  line-height: 1.5;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* 글씨가 잘보이도록 배경처리 */
 }
 
-/* ======================================================= */
-/* ===========      최종 팝업 스타일 (핵심!)     ============ */
-/* ======================================================= */
 
-/* 1. 팝업 배경 (어두운 막) */
 .new_img {
-  /* ★★★ 평소에는 아예 존재하지 않도록 설정 (깜빡임 원천 방지) ★★★ */
-  display: none; 
-  
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
-  z-index: 100;
-  padding: 5vh 5vw; box-sizing: border-box;
+display: none; 
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 10;
+background-color: rgba(0, 0, 0, 0.85);
 }
 
-/* 2. 팝업 내용물 (이미지를 감싸는 틀) */
+
+.project-item.active .new_img {
+display: block;
+}
+
+
+.project-item.active .new_img { display: block; } /* flex 대신 block으로 */
+
 .new_img .inner {
-  width: 100%; height: 100%;
-  max-width: 1200px;
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  overflow-y: auto;
-  padding: 20px; box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* 내용이 길면 스크롤 */
 }
+.new_img .inner img { width: 100%; display: block; }
 
-/* 3. 팝업 안의 이미지 */
-.new_img .inner img {
-  max-width: 100%; display: block; margin: 0 auto;
-}
-.new_img .inner img + img { margin-top: 20px; }
-
-/* 4. 닫기 버튼 */
 .new_img .btn_close {
-  position: fixed; top: 20px; right: 20px;
-  z-index: 120; color: #fff;
-  background-color: rgba(0,0,0,0.5); border: none;
-  border-radius: 50%; font-size: 20px;
-  cursor: pointer; transition: all 0.2s ease;
-  width: 40px; height: 40px;
-  line-height: 40px; text-align: center;
+  position: absolute; /* fixed가 아닌 absolute로 변경! */
+  top: 15px;
+  right: 15px;
+  z-index: 20;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 5px;
 }
-.new_img .btn_close:hover {
-  transform: rotate(90deg); background-color: rgba(255,255,255,0.2);
-}
+.new_img .btn_close:hover { transform: rotate(90deg); }
 
-/* ★★★ JS가 .active 클래스를 추가했을 때의 변화 (가장 중요) ★★★ */
-.project-item.active > .new_img {
-  /* ★★★ 팝업을 화면에 즉시 보여줌 (중앙 정렬) ★★★ */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/* --- 반응형 --- */
+/* --- 모바일 화면 대응 --- */
 @media screen and (max-width: 900px) {
-  .project-grid { grid-template-columns: repeat(2, 1fr); padding-top: 60vh; gap: 30px; }
+  .poster-section { display: none; }
+  .project-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 0; }
 }
 @media screen and (max-width: 600px) {
   .wrapper { padding: 40px 15px 15px 15px; }
-  .project-grid { grid-template-columns: 1fr; padding-top: 50vh; gap: 20px; }
+  .project-grid { grid-template-columns: 1fr; gap: 20px; }
   .main-header { padding: 10px 0; }
   .main-nav { display: none; }
 }
